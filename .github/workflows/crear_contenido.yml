@@ -1,0 +1,25 @@
+name: Crear contenido IA
+
+
+on:
+schedule:
+- cron: "0 9 * * 1" # Ejecuta cada lunes a las 9 AM
+workflow_dispatch: # Permite ejecutarlo manualmente
+
+
+jobs:
+generar:
+runs-on: ubuntu-latest
+steps:
+- name: Clonar repositorio
+uses: actions/checkout@v3
+
+
+- name: Instalar dependencias
+run: |
+pip install openai pandas
+
+
+- name: Generar contenido con IA
+run: |
+python scripts/generar_contenido.py
